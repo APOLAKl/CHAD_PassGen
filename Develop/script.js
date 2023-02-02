@@ -1,59 +1,80 @@
 // Assignment Code
 // generate button
-var generateBtn = document.querySelector("generate");
+var generateBtn = document.querySelector("#generate");
 
-console.log(generateBtn)
+function generatePassword() {
+  
+  var passwordLength = prompt("What is the length of the password?");
 
-// character set for password generator
-charSet = {
-  lowercase: "abcdefghijklmnopqrstuvwxyz",
-  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  numeric: "0123456789",
-  symbol: "!@#$%^&*()-_=+[]{};:'\"\\|,.<>/?",
-};
+  if(parseInt(passwordLength) <=8 || parseInt(passwordLength) >= 128) {
+    alert("Invalid password length!")
+    return "";
+  }
+
+  var includeLowercase = confirm("Do you want to include lowercase?"); // boolean
+
+  var includeUppercase = confirm("Do you want to include uppercase?"); // boolean
+
+  var includeSymbol = confirm("Do you want to include symbol?"); // boolean
+
+  var includeNumber = confirm("Do you want to include number?"); // boolean
+
+
+  if(!includeLowercase && !includeUppercase && !includeSymbol && !includeNumber ) {
+    alert("You must choose atleast one!")
+    return "";
+  }
+
+  // character set for password generator
+  var lowercaseSet = "abcdefghijklmnopqrstuvwxyz";
+  var uppercaseSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var symbol = "!@#$%^&*()-_=+[]{};:'\"\\|,.<>/?";
+  var number = "0123456789"
+
+
+  var selectedSet = "";
+
+  if (includeLowercase === true) {
+    selectedSet = selectedSet + lowercaseSet;
+  }
+
+  if (includeUppercase === true) {
+    selectedSet = selectedSet + uppercaseSet;
+  }
+
+  if (includeSymbol === true) {
+    selectedSet = selectedSet + symbol;
+  }
+
+  if (includeNumber === true) {
+    selectedSet = selectedSet + number;
+  }
+
+  console.log(selectedSet);
+
+  var password = "";
+
+  for(i = 0; i < passwordLength; i++) {
+    var randomNum = Math.floor(Math.random() * selectedSet.length);
+    var randomChar = selectedSet.charAt(randomNum);
+  
+    password = password + randomChar;
+  }
+  
+
+
+
+  return password
+}
+
 
 // Write password to the #password input
 function writePassword() {
-  // prompt for the length of the password
-  let length = parseInt(prompt("Please enter the length of your password. Must be between 8 - 128"));
-  // formula to check if its between 8 to 128
-  if (length >= 8 || length <= 128) {
-    break;
-  }
-  // Else, alert and loop back to choose a valid number
-  alert("Password lenght must be between 8 to 128");
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 }
-
-  // confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-  var lowercase
-  var uppercase
-  var numeric
-  var symbol
-
-
-// WHEN I answer each prompt
-
-// THEN my input should be validated and at least one character type should be selected
-
-// WHEN all prompts are answered
-
-// THEN a password is generated that matches the selected criteria
-
-// WHEN the password is generated
-var password = generatePassword();
-for (var i = 0; i <= Lenght; i++) {
-  var randomNumber = Math.floor(Math.random() * characters.length);
-  password += Characters.substring(randomNumber, randomNumber +1);
-}
-
-var passwordText = document.querySelector("#password");
-
-passwordText.value = password;
-
-console.log(writePassword)
-
-// THEN the password is either displayed in an alert or written to the page
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
