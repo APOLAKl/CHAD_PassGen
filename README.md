@@ -7,7 +7,7 @@ Utilizing available resources to meet the acceptance criteria, I am glad to pres
 
 ## Screenshots
 
-![Password Generator Screenshot](https://apolakl.github.io/CHAD_PassGen/Assets/passgenSS.png)
+![Password Generator Screenshot](https://apolakl.github.io/CHAD_PassGen/Assets/passgenSS.jpg)
 
 
 ## 🔗 Link to Deployed Page
