@@ -52,7 +52,10 @@ function generatePassword() {
     selectedSet = selectedSet + number;
   }  // boolean
 
-  console.log(selectedSet);
+    // trigger before giving generated password that one of the 4 variables is selected
+    if(includeLowercase || includeUppercase || includeSymbol || includeNumber ) {
+      alert("You have chosen atleast one of the variables, Here is your password!👌");
+    }
 
   // password having null value at start
   var password = "";
