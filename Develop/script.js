@@ -7,22 +7,22 @@ function generatePassword() {
   var passwordLength = prompt("What is the length of the password?");
   //must be atleast 8 upto 128 in lenght and will trigger a warning if it is not within the required input
   if(parseInt(passwordLength) <=7 || parseInt(passwordLength) >= 129) {
-    alert("Invalid password length!")
+    alert("Invalid password length, Please choose between 8 upto 128! ❌")
     return "";
   }
 
   // text on dialog box asking if you want to include these variables to your password
-  var includeLowercase = confirm("Do you want to include lowercase?");
+  var includeLowercase = confirm("Do you want to include lowercase? 🔡");
 
-  var includeUppercase = confirm("Do you want to include uppercase?");
+  var includeUppercase = confirm("Do you want to include uppercase? 🔠");
 
-  var includeSymbol = confirm("Do you want to include symbol?");
+  var includeSymbol = confirm("Do you want to include symbol? 🔣");
 
-  var includeNumber = confirm("Do you want to include number?");
+  var includeNumber = confirm("Do you want to include number? 🔢");
 
   // trigger warning that you must choose atlease one of the 4 variables arrays
   if(!includeLowercase && !includeUppercase && !includeSymbol && !includeNumber ) {
-    alert("You must choose atleast one!")
+    alert("Please choose atleast one! ❌")
     return "";
   }
 
@@ -54,7 +54,7 @@ function generatePassword() {
 
     // trigger before giving generated password that one of the 4 variables is selected
     if(includeLowercase || includeUppercase || includeSymbol || includeNumber ) {
-      alert("You have chosen atleast one of the variables, Here is your password!👌");
+      alert("You have chosen atleast one of the variables, Here is your password!✔️");
     }
 
   // password having null value at start
